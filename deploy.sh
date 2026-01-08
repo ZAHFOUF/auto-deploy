@@ -37,7 +37,7 @@ for DIR in "${APPS[@]}"; do
   cd "$DIR"
 
   echo " git pull origin $BRANCH"
-  git pull origin "$BRANCH"
+  git pull origin "$BRANCH" --force
 
   CACHE_DIR="$DIR/var/cache/prod"
   if [ -d "$CACHE_DIR" ]; then
