@@ -1,0 +1,27 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: 🚀 Deploy Production + notify
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+      - name: Deploy Production via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME}}
+          password : ${{ secrets.KEY }}
+          script: |
+            echo "🚀 Starting the script"
+            cd  /deploy && git pull origin main
+            echo "✅ Deployment finished"
+
+
+
