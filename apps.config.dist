@@ -1,0 +1,6 @@
+BRANCH=""
+
+# Liste des applications (chemins ABSOLUS)
+APPS=(
+  
+)
