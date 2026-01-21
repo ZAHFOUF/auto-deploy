@@ -59,6 +59,10 @@ for DIR in "${APPS[@]}"; do
 
   echo "Done bash : $DIR"
 
+  echo "Starting migration: $DIR"
+  php $DIR/bin/console doctrine:migrations:migrate --no-interaction
+  echo "Done migration: $DIR"
+
 
 done
 
