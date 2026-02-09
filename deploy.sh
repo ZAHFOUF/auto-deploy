@@ -93,6 +93,13 @@ run_migrations() {
   log "Done migration: $dir"
 }
 
+run_tests () {
+  local dir="$1"
+  log "Running healthcheck for: $dir"
+  php "$dir/bin/console" app:deploy:healthcheck --env=bash
+  log "Healthcheck passed for: $dir"
+}
+
 deploy_dir_with_branch() {
   local dir="$1"
   local branch="$2"
@@ -114,6 +121,7 @@ deploy_dir_with_branch() {
 
   clear_cache_dirs "$dir"
   run_migrations "$dir"
+  run_tests "$dir"
 
   log "Done: $dir"
 }
@@ -138,9 +146,12 @@ deploy_dir_no_branch() {
 
   clear_cache_dirs "$dir"
   run_migrations "$dir"
+  run_tests "$dir"
 
   log "Done: $dir"
 }
+
+
 
 # =========================
 # Main logic
