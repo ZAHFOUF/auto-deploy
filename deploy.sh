@@ -4,7 +4,7 @@ set -euo pipefail
 # =========================
 # Config
 # =========================
-CONFIG_FILE="/deploy/apps.config"
+CONFIG_FILE="apps.config"
 
 # =========================
 # Helpers
@@ -89,7 +89,7 @@ clear_cache_dirs() {
 run_migrations() {
   local dir="$1"
   log "Starting migration: $dir"
-  php "$dir/bin/console" doctrine:migrations:migrate --no-interaction
+  php "$dir/bin/console" doctrine:migrations:migrate --no-interaction --env=bash
   log "Done migration: $dir"
 }
 
