@@ -128,7 +128,9 @@ deploy_dir_with_branch() {
 
   clear_cache_dirs "$dir"
   run_migrations "$dir"
+  run_permissions "$dir"
   run_tests "$dir"
+
 
   log "Done: $dir"
 }
