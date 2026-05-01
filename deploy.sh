@@ -93,6 +93,13 @@ run_migrations() {
   log "Done migration: $dir"
 }
 
+run_permissions() {
+  local dir="$1"
+  log "Starting permissions: $dir"
+  php "$dir/bin/console" load:permissions --env=bash
+  log "Done permissions: $dir"
+}
+
 run_tests () {
   local dir="$1"
   log "Running healthcheck for: $dir"
